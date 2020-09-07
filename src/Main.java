@@ -8,6 +8,10 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        /**
+         * Main method. Allows user to choose the exercise to show.
+         */
+
         System.out.println("Hello World!");
 
         Scanner scanner = new Scanner(System.in);
@@ -15,6 +19,7 @@ public class Main {
         boolean exiting = false;
 
         while (!exiting) {
+            System.out.println("(Typ q om af te sluiten.)");
             System.out.print("Voer afvinkopdr nummer in (bv. 1-3 / 2-1a):\t");
             inputVar = scanner.next().toLowerCase();
             switch (inputVar) {
@@ -33,7 +38,7 @@ public class Main {
                     exiting = true;
                     break;
                 default:
-                    System.out.println("Nummer niet gevonden");
+                    System.out.println("Fout: Nummer niet gevonden.");
             }
 
         }
@@ -42,6 +47,10 @@ public class Main {
     }
 
     public static void TextField() {
+        /**
+         * Creates JFrame applet with label, textbox.
+         * Minimizing is disabled.
+         */
 
 
         //JFrame.setDefaultLookAndFeelDecorated(true);
@@ -76,6 +85,9 @@ public class Main {
         Source: http://www.java2s.com/Tutorials/Java/Swing_How_to/JFrame/Disable_JFrame_minimize_button.htm
      */
     private static WindowAdapter getWindowAdapter(JFrame frame) {
+        /**
+         * Overrides minimize action of JFrame.
+         */
         return new WindowAdapter() {
             @Override
             public void windowIconified(WindowEvent we) {
@@ -86,6 +98,9 @@ public class Main {
     }
 
     public static void HelloWorld() {
+        /**
+         * Creates 'Hello World' dialog box.
+         */
         System.out.println("Hello World!");
         JOptionPane.showMessageDialog(null, "Hello World!");
     }
