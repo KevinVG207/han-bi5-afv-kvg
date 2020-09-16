@@ -37,7 +37,11 @@ public class Main {
                 case "2":
                     System.out.println("Starting opdracht 2...");
                     H2O_viewer();
-
+                    break;
+                case "3":
+                    System.out.println("Starting opdracht 3...");
+                    System.out.println("WARNING: Play mode popup may appear behind other windows!");
+                    TicTacToe.run();
                     break;
                 case "q":
                 case "quit":
