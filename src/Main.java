@@ -43,6 +43,10 @@ public class Main {
                     System.out.println("WARNING: Play mode popup may appear behind other windows!");
                     TicTacToe.run();
                     break;
+                case "4":
+                    System.out.println("Starting opdracht 4...");
+                    HorseRace.run();
+                    break;
                 case "q":
                 case "quit":
                 case "stop":
