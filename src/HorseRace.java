@@ -92,7 +92,7 @@ public class HorseRace {
         int textOffsetX = 10;
 
         // Clear screen
-        //g.clearRect(0, 0, panelWidth, panelHeight);
+        g.clearRect(0, 0, panelWidth, panelHeight);
 
         // Draw background
         g.setColor(BACKGROUND);
@@ -153,6 +153,7 @@ public class HorseRace {
         playPanel.setPreferredSize(new Dimension(1200, 400));
         playPanel.setBackground(BACKGROUND);
         bottomPanel.setLayout(new FlowLayout());
+
 
         JButton startButton = new JButton("Start the race!");
         startButton.addActionListener(e -> doUpdate(horses, playPanel, startButton));

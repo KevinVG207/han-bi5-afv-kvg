@@ -250,7 +250,10 @@ public class TicTacToe {
                             // Two O in a row! Must block!
 
                             // My crappy algorithm doesn't know that it's in a grid; catch exceptions.
-                            if(!(i == 2 && j == 1 || i == 5 && j == 1 || i == 7 && j == -1)){
+                            if(!(   i == 2 && j == 1 ||
+                                    i == 5 && j == 1 ||
+                                    i == 7 && j == -1 ||
+                                    i == 1 && j == 1)){
                                 curScore += 50;
                             }
                         }
