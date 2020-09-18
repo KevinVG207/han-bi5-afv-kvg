@@ -205,10 +205,10 @@ public class Main {
         // Add mouse listener
         p.addMouseListener(new MouseAdapter(){
             public void mousePressed(MouseEvent e) {
+                // Move molecule to where mouse is clicked.
                 Point point = MouseInfo.getPointerInfo().getLocation();
                 SwingUtilities.convertPointFromScreen(point, p);
                 field_x.setText(Integer.toString((int) point.getX()));
-                //System.out.println(Double.toString(Math.round(point.getX())));
                 field_y.setText(Integer.toString((int) point.getY()));
             }
         });
