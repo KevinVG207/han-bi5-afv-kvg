@@ -2,10 +2,7 @@ import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 import java.util.Scanner;
 
 public class Main {
@@ -127,6 +124,8 @@ public class Main {
      */
     public static void H2O_viewer() throws InterruptedException {
 
+        JOptionPane.showMessageDialog(null,"Verander interactief de getallen,\nof klik om de molecuul te verplaatsen.");
+
         // Setting up JFrame
         JFrame f = new JFrame();
         f.setLayout(new FlowLayout());
@@ -201,6 +200,18 @@ public class Main {
         f.add(lab_scale);
         f.add(field_scale);
         //f.add(button);
+
+
+        // Add mouse listener
+        p.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent e) {
+                Point point = MouseInfo.getPointerInfo().getLocation();
+                SwingUtilities.convertPointFromScreen(point, p);
+                field_x.setText(Integer.toString((int) point.getX()));
+                //System.out.println(Double.toString(Math.round(point.getX())));
+                field_y.setText(Integer.toString((int) point.getY()));
+            }
+        });
 
         //Create GUI
         f.setVisible(true);
