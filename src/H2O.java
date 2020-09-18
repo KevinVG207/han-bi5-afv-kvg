@@ -46,14 +46,16 @@ public class H2O {
         fields[3] = field_scale;
 
         // Add the same DocumentListener to all fields.
-        for(int i = 0; i < fields.length; i++){
-            fields[i].getDocument().addDocumentListener(new DocumentListener() {
+        for (JTextField field : fields) {
+            field.getDocument().addDocumentListener(new DocumentListener() {
                 public void changedUpdate(DocumentEvent e) {
 
                 }
+
                 public void removeUpdate(DocumentEvent e) {
 
                 }
+
                 public void insertUpdate(DocumentEvent e) {
                     try {
                         DrawMolecule(Integer.parseInt(field_x.getText()), Integer.parseInt(field_y.getText()), Float.parseFloat(field_rot.getText()), Float.parseFloat(field_scale.getText()), p.getGraphics(), p.getWidth(), p.getHeight());
