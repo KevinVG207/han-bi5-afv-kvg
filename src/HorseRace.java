@@ -46,7 +46,7 @@ public class HorseRace {
      * @param drawPanel JPanel - Reference to the panel to draw on.
      * @param button JButton - Button to disable once clicked.
      */
-    private static void doUpdate(Horse[] horses, JPanel drawPanel, JButton button){
+    private static void doUpdate(Horse[] horses, JPanel drawPanel, JButton button, JFrame frame){
         button.setEnabled(false);
         String finalHorseName = "";
         while (!finished) {
@@ -65,7 +65,7 @@ public class HorseRace {
             pause(20); // 50FPS
         }
 
-        JOptionPane.showMessageDialog(null, finalHorseName + " has won the race!\nCongratulations!");
+        JOptionPane.showMessageDialog(frame, finalHorseName + " has won the race!\nCongratulations!");
     }
 
     /**
@@ -156,7 +156,7 @@ public class HorseRace {
 
 
         JButton startButton = new JButton("Start the race!");
-        startButton.addActionListener(e -> doUpdate(horses, playPanel, startButton));
+        startButton.addActionListener(e -> doUpdate(horses, playPanel, startButton, f));
         bottomPanel.add(startButton);
 
         panelHolder.setLayout(new BoxLayout(panelHolder, BoxLayout.Y_AXIS));

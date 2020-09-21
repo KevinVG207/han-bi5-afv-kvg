@@ -51,10 +51,12 @@ public class TicTacToe {
         JPanel infoPane = new JPanel();
         JPanel playPane = new JPanel();
         JPanel bottomPane = new JPanel();
+        JPanel buttonPane = new JPanel();
 
         infoPane.setLayout(new FlowLayout());
         playPane.setLayout(new GridLayout(3,3));
         bottomPane.setLayout(new FlowLayout());
+        buttonPane.setLayout(new FlowLayout());
 
         JLabel topLabel = new JLabel("Tic Tac Toe");
         infoPane.add(topLabel);
@@ -72,10 +74,17 @@ public class TicTacToe {
             playPane.add(buttons[i]);
         }
 
+        JButton restartButton = new JButton("Reset");
+        restartButton.addActionListener(e ->
+                restartGame(f, infoLabel));
+        buttonPane.add(restartButton);
+
         panesHolder.setLayout(new BoxLayout(panesHolder, BoxLayout.Y_AXIS));
         panesHolder.add(infoPane);
         panesHolder.add(playPane);
         panesHolder.add(bottomPane);
+        panesHolder.add(buttonPane);
+
 
         f.add(panesHolder);
 
@@ -235,7 +244,7 @@ public class TicTacToe {
         Button with the highest score will be where the CPU plays.
         (With same scores, first button to be checked gets priority.)
         This algorithm doesn't take the grid into consideration so I've added another if-statement
-        that catches the exceptions.
+        that catches some of the exceptions.
          */
         int highestScore = -1;
         for(int i = 0; i < buttons.length; i++){
@@ -268,6 +277,28 @@ public class TicTacToe {
         }
 
         return move;
+    }
+
+
+    /**
+     * restartGame()
+     * Restarts the game when button is pressed.
+     * @param frame JFrame - The frame of the program.
+     * @param infoLabel JLabel - Info label to change.
+     */
+    private static void restartGame(JFrame frame, JLabel infoLabel){
+        frame.setVisible(false);
+        for(JButton curButton : buttons){
+            curButton.setText("");
+            curButton.setEnabled(true);
+        }
+
+        turn = 1;
+
+        infoLabel.setText("Turn: 1. Player O is playing.");
+
+        frame.setVisible(true);
+
     }
 
 }
