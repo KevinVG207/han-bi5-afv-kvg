@@ -43,6 +43,11 @@ public class Main {
                     System.out.println("Starting opdracht 4...");
                     HorseRace.run();
                     break;
+                case "5":
+                    System.out.println("Starting opdracht 5...");
+                    TextPredictDialog TP = new TextPredictDialog();
+                    TP.run();
+                    break;
                 case "q":
                 case "quit":
                 case "stop":
