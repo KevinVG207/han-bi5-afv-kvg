@@ -1,0 +1,5 @@
+sentences_short.csv is an excerpt from the following:
+https://downloads.tatoeba.org/exports/sentences.csv
+
+For the sake of uploading onto github (filesize limit),
+I've stripped down the file to only use sentences in the languages English, Dutch and Japanese.

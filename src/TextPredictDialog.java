@@ -7,7 +7,7 @@ import java.util.concurrent.ExecutionException;
 
 public class TextPredictDialog {
 
-    private final TextPredictor predictor = new TextPredictor("_assets/sentences.csv");
+    private final TextPredictor predictor = new TextPredictor("_assets/sentences_short.csv");
     private final JTextField textField = new JTextField("",40);
     private final DefaultListModel<String> listModel = new DefaultListModel<>();
     private SwingWorker<String[], Void> curWorker = null;
