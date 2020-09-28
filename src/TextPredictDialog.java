@@ -1,3 +1,10 @@
+/**
+ * TextPredictDialog
+ *
+ * This class contains code to set up the GUI for text prediction.
+ * Contains a JTextField and JList to show results.
+ */
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
@@ -7,11 +14,18 @@ import java.util.concurrent.ExecutionException;
 
 public class TextPredictDialog {
 
+    // Declare/init global variables
     private final TextPredictor predictor = new TextPredictor("_assets/sentences_short.csv");
     private final JTextField textField = new JTextField("",40);
     private final DefaultListModel<String> listModel = new DefaultListModel<>();
     private SwingWorker<String[], Void> curWorker = null;
 
+    /**
+     * run()
+     *
+     * Sets up JFrame with JTextField (global init) and JList.
+     * TextField has DocumentListener to update while typing.
+     */
     public void run() {
         JFrame f = new JFrame("Text Prediction");
         f.setSize(512,256);
@@ -56,11 +70,20 @@ public class TextPredictDialog {
 
     }
 
+    /**
+     * predict()
+     *
+     * Use SwingWorker to predict text in different threads.
+     */
     private void predict() {
+
+        // Cancel previous worker if new one is being made.
         if(curWorker != null){
             curWorker.cancel(true);
             curWorker = null;
         }
+
+        // SwingWorker does text prediction in background.
         SwingWorker<String[], Void> worker = new SwingWorker<>(){
             @Override
             protected String[] doInBackground() throws Exception {
@@ -75,6 +98,8 @@ public class TextPredictDialog {
             @Override
             protected void done() {
                 if(!isCancelled()) {
+                    // Worker done and not cancelled:
+                    // Update result list.
                     try {
                         String[] newArray = get();
                         listModel.clear();

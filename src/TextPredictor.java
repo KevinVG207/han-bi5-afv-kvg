@@ -1,3 +1,11 @@
+/**
+ * TextPredictor
+ *
+ * This class does text prediction.
+ * Loads a given .csv, formatted like https://downloads.tatoeba.org/exports/sentences.csv
+ * Looks for sentences that start with given String.
+ */
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -6,8 +14,16 @@ import java.util.List;
 
 public class TextPredictor {
 
+    // Declare/init variables.
     private static List<String> sentences = null;
 
+    /**
+     * TextPredictor()
+     *
+     * Loads .csv file with sentences into memory.
+     *
+     * @param filepath String - File path to .csv file.
+     */
     public TextPredictor(String filepath) {
         try {
             sentences = Files.readAllLines(Path.of(filepath), StandardCharsets.UTF_8);
@@ -23,6 +39,17 @@ public class TextPredictor {
         }
     }
 
+    /**
+     * predict()
+     *
+     * Does text prediction on sentences in memory, using given String.
+     * Returns requested amount of results (ordered by input .csv).
+     *
+     * @param text String - Text to predict with.
+     * @param amount int - Amount of results to return.
+     * @return
+     * @throws NoMatchException
+     */
     public String[] predict(String text, int amount) throws NoMatchException {
 
         String[] out = new String[amount];

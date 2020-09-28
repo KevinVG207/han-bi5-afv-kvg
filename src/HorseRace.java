@@ -154,7 +154,6 @@ public class HorseRace {
         playPanel.setBackground(BACKGROUND);
         bottomPanel.setLayout(new FlowLayout());
 
-
         JButton startButton = new JButton("Start the race!");
         startButton.addActionListener(e -> doUpdate(horses, playPanel, startButton, f));
         bottomPanel.add(startButton);
