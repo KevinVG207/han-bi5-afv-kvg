@@ -48,6 +48,10 @@ public class Main {
                     TextPredictDialog TP = new TextPredictDialog();
                     TP.run();
                     break;
+                case "6":
+                    System.out.println("Starting opdracht 6...");
+                    YANARA.run();
+                    break;
                 case "q":
                 case "quit":
                 case "stop":

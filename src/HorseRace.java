@@ -50,8 +50,7 @@ public class HorseRace {
         button.setEnabled(false);
         String finalHorseName = "";
         while (!finished) {
-            for (int i = 0; i < horses.length; i++) {
-                Horse curHorse = horses[i];
+            for (Horse curHorse : horses) {
                 // Update each horse
                 curHorse.update();
                 if (curHorse.getDistance() > 1000) {
