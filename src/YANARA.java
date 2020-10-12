@@ -1,14 +1,23 @@
 import javax.swing.*;
-import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+/**
+ * This class encompasses the YANARA GUI.
+ * - Creates GUI and deals with button actions.
+ * - Displays results.
+ */
 public class YANARA {
 
+    // Declare/init variables
     private static JFrame f;
     private static String curFilePath = "";
 
+    /**
+     * onBrowse()
+     * Handles file browsing
+     * @param textField JTextField - The JTextField to update upon file selection.
+     */
     private static void onBrowse(JTextField textField){
         JFileChooser jfc = new JFileChooser();
         int returnVal = jfc.showOpenDialog(f);
@@ -18,6 +27,13 @@ public class YANARA {
         }
     }
 
+    /**
+     * onAnalyze()
+     * Starts analyzing all fasta sequences in file.
+     * Displays result in a JTextArea and draws polarity percentages in a JPanel.
+     * @param textArea JTextArea - Results will be written to this.
+     * @param drawArea JPanel - Polarity graph will be drawn on this JPanel.
+     */
     private static void onAnalyze(JTextArea textArea, JPanel drawArea){
         int totLen = 0;
         int totPolar = 0;
@@ -31,7 +47,7 @@ public class YANARA {
                 String curSeq = ProtUtils.listItemToSequence(curProt);
                 String curHead = ProtUtils.listItemToHeader(curProt);
                 try {
-                    seqData.add(ProtUtils.checkProteinValidity(curSeq));
+                    seqData.add(ProtUtils.checkProteinPolarity(curSeq));
                 } catch (ProtUtils.ValidityError e) {
                     textArea.setText(textArea.getText() + "Problematic sequence:\t" + curHead + "\n" + e.getMessage() + ". This sequence is ignored.\n");
                 }
@@ -58,6 +74,14 @@ public class YANARA {
         }
     }
 
+    /**
+     * drawPercentages()
+     * Handles the drawing of the percentages of amino acid polarity.
+     * @param drawArea JPanel - The JPanel to draw on.
+     * @param totLen int - Total amount of amino acids.
+     * @param totPolar int - Total amount of polar amino acids.
+     * @param totNonPolar int - Total amount of non-polar amino acids.
+     */
     private static void drawPercentages(JPanel drawArea, int totLen, int totPolar, int totNonPolar){
         Graphics g = drawArea.getGraphics();
         int panelWidth = drawArea.getWidth();
@@ -90,6 +114,10 @@ public class YANARA {
 
     }
 
+    /**
+     * run()
+     * Creates the JFrame GUI.
+     */
     public static void run(){
         // JFrame layout via JVider
 
