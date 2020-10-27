@@ -52,6 +52,10 @@ public class Main {
                     System.out.println("Starting opdracht 6...");
                     YANARA.run();
                     break;
+                case "7":
+                    System.out.println("Starting opdracht 7...");
+                    biotools.bioapp.SeqVis.run();
+                    break;
                 case "q":
                 case "quit":
                 case "stop":
