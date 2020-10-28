@@ -4,6 +4,7 @@ import biotools.bioseq.DNA;
 import biotools.bioseq.Peptide;
 import biotools.bioseq.RNA;
 import biotools.bioseq.Sequence;
+import biotools.bioseq.Sequence.Color;
 
 import javax.swing.*;
 import java.awt.*;
@@ -62,7 +63,7 @@ public class SeqVis {
      * GUI Class, handelt de ActionListeners.
      */
     public SeqVis() {
-        visPanel.setBackground(Color.black);
+        visPanel.setBackground(java.awt.Color.BLACK);
         browseButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -98,7 +99,7 @@ public class SeqVis {
                     visualize();
                 } catch (NoValidSeq ex){
                     textArea1.setText(ex.getMessage());
-                    visPanel.getGraphics().setColor(Color.black);
+                    visPanel.getGraphics().setColor(java.awt.Color.BLACK);
                     visPanel.getGraphics().fillRect(0,0,visPanel.getWidth(),visPanel.getHeight());
                 }
             }
@@ -196,7 +197,24 @@ public class SeqVis {
         g.clearRect(0,0,panelWidth,panelHeight);
 
         for(int i = 0; i < len; i++){
-            g.setColor(seqClass.getColor(i));
+            Color curColor = seqClass.getColor(i);
+            switch(curColor){
+                case RED:
+                    g.setColor(java.awt.Color.RED);
+                    break;
+                case BLUE:
+                    g.setColor(java.awt.Color.BLUE);
+                    break;
+                case GRAY:
+                    g.setColor(java.awt.Color.GRAY);
+                    break;
+                case YELLOW:
+                    g.setColor(java.awt.Color.YELLOW);
+                    break;
+                default:
+                    g.setColor(java.awt.Color.BLACK);
+                    break;
+            }
             g.fillRect(i * charLength, 0, charLength, panelHeight);
         }
     }

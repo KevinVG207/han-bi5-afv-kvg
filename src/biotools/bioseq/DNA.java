@@ -1,22 +1,20 @@
 package biotools.bioseq;
 
-import java.awt.*;
-
 /**
  * DNA Class
  */
 public class DNA extends Sequence {
     @Override
     public Color getColor(int position) {
-        Color curColor = Color.black;
+        Color curColor = Color.BLACK;
         if (position > sequence.length()){
             return curColor;
         } else {
             char curChar = sequence.charAt(position);
             if (curChar == 'A' || curChar == 'T'){
-                return Color.yellow;
+                return Color.YELLOW;
             } else {
-                return Color.red;
+                return Color.RED;
             }
         }
     }
